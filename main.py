@@ -41,9 +41,17 @@ try:
 
     anime_search.click()
 
-    episode_numbers = input('What episodes (e.g 1,2,3,4,5) ?\n').split(',')
+    new_episode = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[contains(text(), 'Watch')]"))
+    )
 
-    quality = input('What quality ? (e.g 360, 720, 1080)')
+    driver.execute_script("arguments[0].scrollIntoView(true);", new_episode)
+
+    new_episode_number = new_episode.text.replace('Watch - ', '').replace('Online', '')
+
+    episode_numbers = input(f'Latest episode is {new_episode_number} \n What episodes (e.g 1,2,3,4,5)  ?\n').split(',')
+
+    quality = input('What quality ? (e.g 360, 720, 1080)\n')
 
     for episode_number in episode_numbers:
         episode_number = episode_number.strip()
