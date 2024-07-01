@@ -40,5 +40,5 @@ Start in terminal
 
 ## Screenshots
 
-![App Screenshot]("./img/demo.png")
+![App Screenshot](./img/demo.png)
 
